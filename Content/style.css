@@ -1,0 +1,215 @@
+P
+{
+ text-align: justify;
+}
+
+h1 {
+    color:  rgb(47,141,213);
+}    
+
+h2 {
+    color:  rgb(47,141,213);
+}    
+
+a:link
+{
+  color:blue;
+  text-decoration:underline;
+}
+a:active
+{
+  color:blue;
+  text-decoration:underline;   
+}
+a:visited
+{
+  color:purple;
+  text-decoration:underline;
+}
+
+li a:link
+{
+  text-decoration: none;
+}
+
+.email
+{
+  color:blue;
+  text-decoration:underline;
+  cursor:pointer;
+}
+body
+{
+  background-color:#ddddff;
+  font: 12pt Verdana;
+}         
+/*
+a:hover{
+color:blue;
+font-weight:bold;
+text-decoration:none;
+}
+*/
+#Container
+{
+  position: relative;
+  margin: 0px auto;
+  width: 1000px;/*95%;*/
+  min-width:900px; 
+  max-width: 3000px;
+  border: 2px solid #2f8dd5; 
+/* border-radius: 10px;*/
+  box-shadow: 10px 10px 20px rgba(0,0,0,0.5); /* Параметры тени */
+}
+
+.Title_Main
+{
+/*  background-image: url(Images/panes1.gif); */
+  background-color:rgb(220,240,255);
+  position:relative;
+  overflow:hidden;
+  width: 100%;
+  height: 80px;
+}
+
+.Title_RT_Text3d
+{
+
+  padding: 5px 0px 0px 0px;
+  width:100%;
+  float:left;
+ text-align: center;
+/*
+ font-family: Garamond, serif;
+ color:  rgb(47,141,213);
+ font-weight:bold;
+ font-size: 48px;
+
+text-shadow:0px 0px 0 rgb(23,117,189),1px 1px 0 rgb(8,102,174),2px 2px 0 rgb(-6,88,160),3px 3px 0 rgb(-21,73,145),4px 4px 0 rgb(-35,59,131),5px 5px 0 rgb(-50,44,116), 6px 6px 0 rgb(-64,30,102),7px 7px 6px rgba(0,0,0,0.6),7px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);
+*/
+font-family: Garamond, serif;
+line-height: 1em;
+color: #2f8dd5;
+font-weight:bold;
+font-size: 56px;
+text-shadow:0px 0px 0 rgb(15,109,181),1px 1px 0 rgb(-6,88,160),2px 2px 0 rgb(-28,66,138),3px 3px 0 rgb(-50,44,116), 4px 4px 0 rgb(-72,22,94),5px 5px 4px rgba(0,0,0,0.6),5px 5px 1px rgba(0,0,0,0.5),0px 0px 4px rgba(0,0,0,.2);
+}
+
+.band
+{
+  background: #cccccc; 
+
+  background: -webkit-linear-gradient(rgb(47,141,213), rgb(7,101,150)); /* For Safari */
+  background: -o-linear-gradient(rgb(47,141,213), rgb(7,101,150)); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(rgb(47,141,213), rgb(7,101,150)); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(rgb(47,141,213), rgb(7,101,150)); /* Standard syntax */
+
+  position:relative;
+  top: 0px;
+  height: 28px;
+  width:100%; 
+/*  box-shadow: 5px 10px 10px rgba(0,0,0,0.5); */
+}
+
+.ie .band
+{
+  position:relative;
+  top: 0px;
+  height: 28px;
+  width:100%; 
+  background: rgb(47,141,213);
+}
+
+
+#menu
+{
+  padding: 0px 0px 0px 25px;
+ 
+}
+
+#nav {
+ font-family:Verdana;
+ float: left;
+ margin: 0; padding: 0;
+ font-size: 14px; 
+ font-weight:bold;
+ height: 28px;
+}
+
+
+
+
+
+
+
+#nav li {
+ list-style: none;
+ position: relative;
+}
+
+#nav li a, #nav li {
+ float: left;
+}
+
+#nav li a {
+ padding: 5px 25px;
+ text-decoration: none;
+ color: rgb(220,220,255);
+
+}
+
+#nav li a:hover {
+color: #2f8dd5;
+background: #eeeeee;
+
+/* border: 2px solid #2f8dd5; */
+ border-radius: 10px;
+ box-shadow: 10px 10px 20px rgba(0,0,0,0.5);  /* Параметры тени */
+}
+
+/* Submenu */
+
+#nav li ul {
+ display: none;
+ position: absolute;
+ width:200px;
+ left: -10px;
+ top: 100%;
+ padding: 5px 5px 5px 5px;
+border-radius: 6px;
+}
+
+#nav li:hover > ul {
+ display: block;
+/* color: #2f8dd5; */
+ background: rgb(47,141,200);
+ border: 1px solid white;
+ box-shadow: 10px 10px 20px rgba(0,0,0,0.5); /* Параметры тени */
+}
+
+#nav li ul li, #nav li ul li a {
+text-align:left;
+}
+
+#nav li ul li a {
+}
+
+#Panes
+{
+  line-height: 1.5; 
+  display:inline-block;
+  padding:0px 1% 0px 70px; 
+  BACKGROUND:url(Images/panes1.gif); 
+  min-height:600px; 
+  width:920px;
+}
+
+#Panes li
+{
+  text-align:justify;
+}
+
+#Panes H2
+{
+  text-align:center;  
+}

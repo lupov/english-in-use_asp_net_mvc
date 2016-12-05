@@ -1,0 +1,67 @@
+﻿@{
+    /**************************************************************************
+ * Copiright(C) 2016 Sergey Lupov
+ *
+ * English-in-Use (v.1.X.X) is an application for studying english.
+ * Prepared english phrases are spoken in a random order.
+ * You have to recall the translation of the phrase
+ * and after a short pause they are spoken by the program automatically.
+ *
+ * Web Site: http://english-in-use.com
+ * E-mail: sergey.lupov {at} english-in-use.com
+ *
+ * This file is part of English-in-Use.
+ *
+ * English-in-Use is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Foobar is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ ***************************************************************************/
+}
+@{
+    string Title = "Английский язык на слух";
+    if (ViewBag.Title != null)
+    {
+        Title = ViewBag.Title;
+    }
+}
+<!doctype html>
+<html lang=ru>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="~/Content/style.css" type="text/css">
+    <link rel="icon" href="~/Content/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="~/Content/favicon.ico" type="image/x-icon">
+    <title>@Title</title>
+</head>
+<body>
+    <div id="Container">
+        <div class="Title_Main">
+            <div class="Title_RT_Text3d">@Title</div>
+        </div>
+        <div class="band">
+            <div id="menu">
+                <ul id="nav">
+
+                    <li>
+                        <a href="/"><b>Online тренажер</b></a>
+                    </li>
+                    <li><a href="http://english-in-use.com"><b>Английский язык</b></a></li>
+                    <li><a href="http://hebrew-in-use.ru"><b>Иврит</b></a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="Panes">
+            <div style="position:absolute; top: 300px; left: 12px;"><img src="~/Content/Images/mouse.gif" width="53" height="55" alt="Mouse"></div>
+            <div style="position:absolute; top: 600px; left: 5px;"><img src="~/Content/Images/frag.gif" width="47" height="44" alt="Frag"></div>
+            @RenderBody()
+            <br>
+        </div>
+    </div>
+</body>
+</html>
