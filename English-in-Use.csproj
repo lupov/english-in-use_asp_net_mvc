@@ -145,10 +145,16 @@
     <Content Include="Views\Main\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Main\PartialIndex.cshtml" />
+    <Content Include="Views\Main\EnRuAudio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Main\RuEnAudio.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Main\EnAudio.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

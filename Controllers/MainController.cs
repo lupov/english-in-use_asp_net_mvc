@@ -47,16 +47,20 @@ namespace English_in_Use.Controllers
             if (startBtn != null) return View(true);
             else return View(false);
         }
-
+        [HttpPost]
         public ActionResult PartialIndex()
         {
-            return PartialView(Verbs.GetRandomVerb().GetRandomPhrase());
+            return PartialView("EnRuAudio", Verbs.GetRandomVerb().GetRandomPhrase());
         }
         
-        [HttpPost]
-        public ActionResult PartialIndex(string startBtn)
+        [HttpGet]
+        public ActionResult PartialIndex(string startBtn, string dir, string Period)
         {
-            return PartialView(Verbs.GetRandomVerb().GetRandomPhrase());
+            if(Period=="Slow") ViewBag.Delay=8000;
+            else               ViewBag.Delay=3000;
+            if (dir == "EnRu") return PartialView("EnRuAudio", Verbs.GetRandomVerb().GetRandomPhrase());
+            else if (dir == "RuEn") return PartialView("RuEnAudio", Verbs.GetRandomVerb().GetRandomPhrase());
+            else return PartialView("EnAudio", Verbs.GetRandomVerb().GetRandomPhrase());
         }
 
         public static xmlDataReader dataReader = new xmlDataReader("Lesson1.xml");
