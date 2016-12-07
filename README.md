@@ -7,7 +7,7 @@ and after a short pause it is spoken by the program automatically.
 
 Requirements
 ------------
-ASP.NET MVC (ver. 4 and higher) Web Application (VS 2013)
+ASP.NET MVC (ver. 4 and higher) Web Application (VS 2013) <br>
 .NET Framework ver. 4 and higher
 
 Demonstration site 
