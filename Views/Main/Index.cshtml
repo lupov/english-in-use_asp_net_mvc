@@ -26,21 +26,21 @@
 @{
     //    ViewBag.Title = ViewBag.RND;
     Layout = "~/Views/Shared/_Layout.cshtml";
-    @model bool
+    @model English_in_Use.Controllers.ViewParameters
 }
 <div>
     @using (Html.BeginForm("Index", "Main", FormMethod.Get))
     {
-        <input type=RADIO name="dir" value="EnRu" checked> @:Текст произносится на английском языке, затем (после паузы) на русском<br>
-        <input type=RADIO name="dir" value="RuEn"> @:Текст произносится на русском языке, затем (после паузы) на английском языке<br>
-        <input type=RADIO name="dir" value="En"> @:Текст произносится только на английском языке<br><br>
-        <input type=CHECKBOX name="Period" value="Slow"> @:Увеличить паузу<br><br>
+        <input type=RADIO name="dir" value="EnRu" @Model.EnRu/>  @:Текст произносится на английском языке, затем (после паузы) на русском<br>
+        <input type=RADIO name="dir" value="RuEn" @Model.RuEn/> @:Текст произносится на русском языке, затем (после паузы) на английском языке<br>
+        <input type=RADIO name="dir" value="En" @Model.En/> @:Текст произносится только на английском языке<br><br>
+        <input type=CHECKBOX name="Period" value="Slow" @Model.Slow/> @:Увеличить паузу<br><br>
 
 
         <input type="submit" name="startBtn" value="Пуск" style="font-size: 14pt; width: 100px; height: 50px; border-radius: 10px; background-color:rgb(221, 221, 221); box-shadow: 1px 1px 2px rgba(0,0,0,0.5);" />
     }
 </div>
-@if (@Model)
+@if (@ViewBag.showAction)
 {
     @Html.Action("PartialIndex")
 }
@@ -75,5 +75,3 @@
         }
     </table>
 </div>
-</body>
-</html>

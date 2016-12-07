@@ -40,12 +40,20 @@ namespace English_in_Use.Controllers
         // GET: /Main/
 
         [HttpGet]
-        public ActionResult Index(string startBtn, string stopBtn)
+        public ActionResult Index(string startBtn, string stopBtn, string dir, string Period)
         {
+            if (dir == "En") viewParams.En = "checked";
+            else if (dir == "RuEn") viewParams.RuEn = "checked";
+            else if (dir == "EnRu") viewParams.EnRu = "checked";
+            if (Period != null) viewParams.Slow = "checked";
+            else if(startBtn != null) viewParams.Slow = "";
+
             Verbs = new VerbsCollection(dataReader);
             ViewBag.Verbs = Verbs;
-            if (startBtn != null) return View(true);
-            else return View(false);
+            if (startBtn != null) ViewBag.showAction = true;
+            else ViewBag.showAction = false;
+
+            return View(viewParams);
         }
         [HttpPost]
         public ActionResult PartialIndex()
@@ -56,14 +64,74 @@ namespace English_in_Use.Controllers
         [HttpGet]
         public ActionResult PartialIndex(string startBtn, string dir, string Period)
         {
-            if(Period=="Slow") ViewBag.Delay=8000;
-            else               ViewBag.Delay=3000;
-            if (dir == "EnRu") return PartialView("EnRuAudio", Verbs.GetRandomVerb().GetRandomPhrase());
-            else if (dir == "RuEn") return PartialView("RuEnAudio", Verbs.GetRandomVerb().GetRandomPhrase());
-            else return PartialView("EnAudio", Verbs.GetRandomVerb().GetRandomPhrase());
+            if (Period == "Slow") ViewBag.Delay = 8000;
+            else ViewBag.Delay = 3000;
+            if (dir == "EnRu")
+            {
+                ViewBag.dirEnRu = "checked";
+                return PartialView("EnRuAudio", Verbs.GetRandomVerb().GetRandomPhrase());
+            }
+            else if (dir == "RuEn")
+            {
+                ViewBag.dirRuEn = "checked";
+                return PartialView("RuEnAudio", Verbs.GetRandomVerb().GetRandomPhrase());
+            }
+            else
+            {
+                ViewBag.dirEn = "checked";
+                return PartialView("EnAudio", Verbs.GetRandomVerb().GetRandomPhrase());
+            }
         }
 
         public static xmlDataReader dataReader = new xmlDataReader("Lesson1.xml");
         public static VerbsCollection Verbs;
+        public static ViewParameters viewParams = new ViewParameters();
     }
+
+    public class ViewParameters
+    {
+        public ViewParameters() 
+        { 
+            EnRu = "checked";
+            Slow = "";
+        }
+        public string EnRu
+        {
+            set
+            {
+                _enru = value;
+                _ruen = "";
+                _en = "";
+
+            }
+            get { return _enru; }
+        }
+        public string RuEn
+        {
+            set
+            {
+                _ruen = value;
+                _enru = "";
+                _en = "";
+
+            }
+            get { return _ruen; }
+        }
+        public string En
+        {
+            set
+            {
+                _en = value;
+                _enru = "";
+                _ruen = "";
+
+            }
+            get { return _en; }
+        }
+        public string Slow { set; get; }
+
+        private string _enru;
+        private string _ruen;
+        private string _en;
+    };
 }
