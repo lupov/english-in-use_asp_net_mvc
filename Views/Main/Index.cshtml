@@ -32,6 +32,7 @@
     int count = 0;
 }
 <div>
+    @Html.Partial("Text")
     @using (Html.BeginForm("Index", "Main", FormMethod.Get))
     {
         <input type=RADIO name="dir" value="EnRu" @Model.EnRu/>  @:Текст произносится на английском языке, затем (после паузы) на русском<br>
