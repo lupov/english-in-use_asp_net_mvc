@@ -48,23 +48,8 @@ namespace English_in_Use.Models.DataReadUtils
             return verbs;
         }
 
-        public List<int> GetSelectedVerbs()
-        {
-            if (selectedVerbs.Count == 0) GetData();
-            return selectedVerbs;
-        }
-
         private void GetData()
         {
-            String str = ReadFile();
-            if (str == null) return;
-        }
-
-        public String ReadFile()
-        {
-#if DEBUG
-//            Environment.CurrentDirectory = "..\\..";
-#endif
             string text = "";
             String xml_file_name = System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data/Lesson1.xml");
 
@@ -83,10 +68,9 @@ namespace English_in_Use.Models.DataReadUtils
             catch (System.IO.FileNotFoundException)
             {
             }
-            return text;
         }
 
-        void XMLParser(string text)
+        private void XMLParser(string text)
         {
             string main_dir;
 
@@ -158,12 +142,9 @@ namespace English_in_Use.Models.DataReadUtils
                     String verb_rus = match_rus.Groups[1].Value;
 
                     verbs.Add(new VerbComponents(phrases, verb_present, verb_past, verb_rus, verb_dir));
-                    selectedVerbs.Add(i);
                 }
             }
         }
-
         public List<VerbComponents> verbs = new List<VerbComponents>();
-        public List<int> selectedVerbs = new List<int>();
     }
 }

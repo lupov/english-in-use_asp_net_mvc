@@ -35,7 +35,6 @@ namespace English_in_Use.Models.Phrases
         public VerbsCollection(DataReader dataReader)
         {
             verbs = dataReader.GetVerbs();
-            selectedVerbs = dataReader.GetSelectedVerbs();
         }
         public VerbComponents GetRandomVerb()
         {
@@ -43,8 +42,15 @@ namespace English_in_Use.Models.Phrases
             int num = rnd.Next(0, verbs.Count);
             return verbs[num];
         }
+        public VerbComponents GetRandomVerb(List<int> indexesSel)
+        {
+            if (indexesSel.Count == 0) return GetRandomVerb();
+            Random rnd = new Random();
+            int num = indexesSel[rnd.Next(0, indexesSel.Count)];
+            if (num > verbs.Count) return GetRandomVerb();
+            return verbs[num];
+        }
 
         public List<VerbComponents> verbs;
-        public List<int> selectedVerbs;
     }
 }

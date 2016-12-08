@@ -35,6 +35,5 @@ namespace English_in_Use.Models.DataReadUtils
     public interface DataReader
     {
         List<VerbComponents> GetVerbs();
-        List<int> GetSelectedVerbs();
     }
 }

@@ -38,7 +38,6 @@ namespace English_in_Use.Models.Phrases
         this.verbPast = verbPast;
         this.verbRus = verbRus;
         this.verbDir = verbDir;
-        this.isSelect = true;
       }
       public VerbComponents(String verbPresent, String verbPast, String verbRus, String verbDir)
       {
@@ -46,7 +45,6 @@ namespace English_in_Use.Models.Phrases
         this.verbPast = verbPast;
         this.verbRus = verbRus;
         this.verbDir = verbDir;
-        this.isSelect = true;
       }
       public Phrase GetRandomPhrase()
       {
@@ -59,6 +57,5 @@ namespace English_in_Use.Models.Phrases
       public String verbPast;
       public String verbRus;
       public String verbDir;
-      Boolean isSelect;
     }
 }

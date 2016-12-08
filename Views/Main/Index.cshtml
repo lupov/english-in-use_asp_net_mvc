@@ -27,6 +27,9 @@
     //    ViewBag.Title = ViewBag.RND;
     Layout = "~/Views/Shared/_Layout.cshtml";
     @model English_in_Use.Controllers.ViewParameters
+
+    int count = 0;
+    string aaa = "1234";
 }
 <div>
     @using (Html.BeginForm("Index", "Main", FormMethod.Get))
@@ -36,8 +39,9 @@
         <input type=RADIO name="dir" value="En" @Model.En/> @:Текст произносится только на английском языке<br><br>
         <input type=CHECKBOX name="Period" value="Slow" @Model.Slow/> @:Увеличить паузу<br><br>
 
-
         <input type="submit" name="startBtn" value="Пуск" style="font-size: 14pt; width: 100px; height: 50px; border-radius: 10px; background-color:rgb(221, 221, 221); box-shadow: 1px 1px 2px rgba(0,0,0,0.5);" />
+
+        <input type="hidden" id="Words" name="Words" value="@Model.Words">
     }
 </div>
 @if (@ViewBag.showAction)
@@ -46,8 +50,9 @@
 }
 
 <div style="position:relative; top:20px;">
-    <table border=1>
+    <table id="tblWords" border=1>
         <tr><td style="width:230px; padding:0 5px;">Основная форма</td><td style="width: 230px; padding:0 5px;">Прошедшее время</td><td style="width: 380px; padding: 0 5px;">Перевод</td><td></td></tr>
+
         @foreach (English_in_Use.Models.Phrases.VerbComponents verb in ViewBag.Verbs.verbs)
         {
             string[] wordsPres = verb.verbPresent.Split('[');
@@ -57,7 +62,7 @@
                     <b>@wordsPres[0]</b>
                     @if (wordsPres.Length > 1)
                     {
-                        @: [@wordsPres[1];
+                        @: [@wordsPres[1]
                     }
                 </td>
                 <td style="padding:0 5px;">
@@ -66,12 +71,59 @@
                     </b>
                     @if (wordsPost.Length > 1)
                     {
-                        @: [@wordsPost[1];
+                        @: [@wordsPost[1]
                     }
                 </td>
                 <td style="padding:0 5px;"><b>@verb.verbRus</b></td>
-                <td><input type=CHECKBOX checked></td>
+                <td><input type=CHECKBOX @if(Model.Words[count] == '1') { @("checked") } onchange = "RevChar(@count);" ></td>
+                @{ count++; } 
             </tr>
         }
     </table>
 </div>
+
+<script>
+function RevChar(num)
+{
+  var obj=document.getElementById('Words');
+  var str = obj.value;
+  var ch=str[num];
+  if(ch=='0') ch='1';
+  else        ch='0';
+  obj.value=str.substring(0, num)+ch+str.substring(num+1);
+}
+
+function SetChars()
+{
+  str="";
+  var table = document.getElementById('tblWords');
+  var inputs= table.getElementsByTagName('input');
+  isCheck = inputs[0].checked;
+  for(var i=1; i<inputs.length; i++)
+  {
+    inputs[i].checked=isCheck;
+    str+=isCheck?"1":"0";
+  }
+  document.Form1.Words.value=str;
+}
+
+function SoundWord(verb)
+{
+  var Aud = document.getElementById('aud1');
+
+  if(Aud.canPlayType)
+  {
+    if (Aud.canPlayType('audio/mpeg')!="")
+    {
+      SoundFile="MP3/Hebrew/"+verb+".mp3";
+    }
+    else if (Aud.canPlayType('audio/ogg')!="")
+    {
+      SoundFile="OGG/Hebrew/"+verb+".ogg";
+    }
+    Aud.src=SoundFile;
+    Aud.play();
+  }
+}
+</script>
+
