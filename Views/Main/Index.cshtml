@@ -1,5 +1,5 @@
-﻿@{
-/**************************************************************************
+﻿<!--
+ **************************************************************************
  * Copiright(C) 2016 Sergey Lupov
  *
  * English-in-Use (v.1.X.X) is an application for studying english.
@@ -21,15 +21,15 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- ***************************************************************************/
-}
+ ***************************************************************************
+-->
+
 @{
     //    ViewBag.Title = ViewBag.RND;
     Layout = "~/Views/Shared/_Layout.cshtml";
     @model English_in_Use.Controllers.ViewParameters
 
     int count = 0;
-    string aaa = "1234";
 }
 <div>
     @using (Html.BeginForm("Index", "Main", FormMethod.Get))
@@ -51,7 +51,12 @@
 
 <div style="position:relative; top:20px;">
     <table id="tblWords" border=1>
-        <tr><td style="width:230px; padding:0 5px;">Основная форма</td><td style="width: 230px; padding:0 5px;">Прошедшее время</td><td style="width: 380px; padding: 0 5px;">Перевод</td><td></td></tr>
+        <tr>
+            <td style="width:230px; padding:0 5px;">Основная форма</td>
+            <td style="width: 230px; padding:0 5px;">Прошедшее время</td>
+            <td style="width: 380px; padding: 0 5px;">Перевод</td>
+            <td onclick="SetChars()" style="text-align:center;"><img src="/Content/Images/galka.png" style="width:16px;height:16px;"></td>
+        </tr>
 
         @foreach (English_in_Use.Models.Phrases.VerbComponents verb in ViewBag.Verbs.verbs)
         {
@@ -95,35 +100,28 @@ function RevChar(num)
 
 function SetChars()
 {
-  str="";
+  var str="";
   var table = document.getElementById('tblWords');
   var inputs= table.getElementsByTagName('input');
-  isCheck = inputs[0].checked;
-  for(var i=1; i<inputs.length; i++)
+
+  var isCheck = false;
+  var words = document.getElementById('Words').value;
+
+  for (var i = 1; i < words.length; i++)
+  {
+      if(words[i]=='0')
+      {
+          isCheck = true;
+      }
+  }
+
+  for(var i=0; i<inputs.length; i++)
   {
     inputs[i].checked=isCheck;
     str+=isCheck?"1":"0";
   }
-  document.Form1.Words.value=str;
+  document.getElementById('Words').value = str;
 }
 
-function SoundWord(verb)
-{
-  var Aud = document.getElementById('aud1');
-
-  if(Aud.canPlayType)
-  {
-    if (Aud.canPlayType('audio/mpeg')!="")
-    {
-      SoundFile="MP3/Hebrew/"+verb+".mp3";
-    }
-    else if (Aud.canPlayType('audio/ogg')!="")
-    {
-      SoundFile="OGG/Hebrew/"+verb+".ogg";
-    }
-    Aud.src=SoundFile;
-    Aud.play();
-  }
-}
 </script>
 
